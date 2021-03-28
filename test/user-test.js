@@ -6,7 +6,7 @@ const User = require('../classes/user');
 describe('User', () => {
   let user;
   beforeEach(() => {
-    user = new User({ id: 1, name: 'Zach Johnson', address: '123 Bear Valley Ln, Las Vegas NV 12345-6789', email: 'zachjohnson123@gmail.com', strideLength: 3.5, dailyStepGoal: 10000, friends: []});
+    user = new User({ id: 1, name: 'Zach Johnson', address: '123 Bear Valley Ln, Las Vegas NV 12345-6789', email: 'zachjohnson123@gmail.com', strideLength: 3.5, dailyStepGoal: 10000, friends: [2]});
   });
 
   it('should be a function', () => {
@@ -24,6 +24,10 @@ describe('User', () => {
     expect(user.email).to.equal('zachjohnson123@gmail.com');
     expect(user.strideLength).to.equal(3.5);
     expect(user.dailyStepGoal).to.equal(10000);
-    expect(user.friends).to.deep.equal([]);
-  })
+    expect(user.friends).to.deep.equal([2]);
+  });
+
+  it('should return first name only', () => {
+    expect(user.getFirstName()).to.equal('Zach');
+  });
 })
