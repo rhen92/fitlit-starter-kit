@@ -1,0 +1,55 @@
+* {
+  color: #FFFFFF;
+}
+
+body {
+  margin: 0;
+	padding: 0;
+	outline: 0;
+  width: 100%;
+  height: auto;
+  background: rgb(39,52,67);
+  background: linear-gradient(0deg, rgba(39,52,67,1) 0%, rgba(0,0,57,1) 77%, rgba(0,119,168,1) 100%);
+}
+
+.greeting {
+  text-align: center;
+}
+
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.parent-container {
+  display: grid;
+  /* gap: 1.5%; */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr auto;
+  height: auto;
+  margin: auto;
+}
+
+.box {
+  width: 40vw;
+  height: 20vh;
+}
+
+.hydration {
+  background-color: #E0489B;
+}
+
+.sleep {
+  background-color: #7E26B9;
+}
+
+.activity {
+  background-color: #48E0AD;
+}
+
+.activity-average {
+  background-color: #2F8EA1;
+}
