@@ -2,11 +2,36 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Activity Tracker</title>
+    <title>Avocado Fit</title>
+    <link href="styles.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Activity Tracker</h1>
+    <nav>
+      <h3>Avocado Fit</h3>
+    </nav>
+    <h1>Greetings, ~~USER~~</h1>
+    <section class="steps">
+      <h2>Today's Steps:</h2>
+      <h3>Your Goal:</h3>
+      <h6>Average User Goal:</h6>
+    </section>
+    <div class="parent-container">
+      <section class="hydration">
 
+      </section>
+      <section class="sleep">
+      
+      </section>
+      <section class="activity">
+      
+      </section>
+      <section class="activity-average">
+      
+      </section>
+    </div>
+    
+    <script type="text/javascript" src="../classes/user.js"></script>
+    <script type="text/javascript" src="../classes/userRepository.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
@@ -14,3 +39,9 @@
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>
+
+<!-- info card with all of user's info
+Display First name prominently to welcome 
+Display how user step goal compares to average among all users
+Display for water consumed today
+-->
