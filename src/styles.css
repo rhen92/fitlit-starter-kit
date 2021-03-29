@@ -9,7 +9,7 @@ body {
   width: 100%;
   height: auto;
   background: rgb(39,52,67);
-  background: linear-gradient(0deg, rgba(39,52,67,1) 0%, rgba(0,0,57,1) 77%, rgba(0,119,168,1) 100%);
+  background: linear-gradient(180deg, rgba(39,52,67,1) 0%, rgba(0,0,57,1) 77%, rgba(0,119,168,1) 100%);
 }
 
 .greeting {
