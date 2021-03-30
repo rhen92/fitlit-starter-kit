@@ -26,15 +26,12 @@ body {
 
 .parent-container {
   display: grid;
-  /* gap: 1.5%; */
   width: 100vw;
   height: 60vh;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  justify-content: center;
-  align-content: center;
-  /* height: auto; */
-  /* margin: auto; */
+  justify-items: center;
+  align-items: center;
 }
 
 .box {
