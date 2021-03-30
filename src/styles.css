@@ -7,9 +7,10 @@ body {
 	padding: 0;
 	outline: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   background: rgb(39,52,67);
   background: linear-gradient(180deg,#273443 0%,#000039 77%,#003f59 100%);
+  background-repeat: none;
 }
 
 .greeting {
