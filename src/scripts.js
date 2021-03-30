@@ -7,22 +7,26 @@ const infoEmail = document.querySelector('#infoEmail');
 const infoStride = document.querySelector('#infoStride');
 const infoFriends = document.querySelector('#infoFriends');
 
-
+let currentUser = new User(userData[0]);
+let { id, name, email, strideLength, dailyStepGoal, friends } = currentUser;
 
 window.addEventListener('load', greetUser);
-// window.addEventListener('load', displaySteps);
 
 function greetUser() {
-  let currentUser = new User(userData[0]);
   greeting.innerText = `Welcome ${currentUser.getFirstName()}!`;
-  displayStepGoal(currentUser);
+  displayStepGoal();
+  displayInfoCard();
 }
 
-function displayStepGoal(currentUser) {
+function displayStepGoal() {
   let totalUsers = new UserRepository(userData);
-  console.log(totalUsers);
-  userStepGoal.innerText = `Your step goal: ${currentUser.dailyStepGoal}`;
+  userStepGoal.innerText = `Your step goal: ${dailyStepGoal}`;
   averageStepGoal.innerText = `Average goal among users: ${totalUsers.getAverageStepGoal()}`
 }
 
-function 
+function displayInfoCard() {
+  infoName.innerText = `${name}`;
+  infoEmail.innerText = `${email}`;
+  infoStride.innerText = `${strideLength}`;
+  infoFriends.innerText = `${friends}`;
+}
