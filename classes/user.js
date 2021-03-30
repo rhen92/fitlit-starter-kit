@@ -10,8 +10,7 @@ class User {
   }
 
   getFirstName() {
-    let firstName = this.name.split(' ');
-    return firstName[0];
+    return this.name.split(' ')[0];
   }
 }
 
