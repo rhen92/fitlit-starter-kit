@@ -9,7 +9,7 @@ body {
   width: 100%;
   height: auto;
   background: rgb(39,52,67);
-  background: linear-gradient(180deg, rgba(39,52,67,1) 0%, rgba(0,0,57,1) 77%, rgba(0,119,168,1) 100%);
+  background: linear-gradient(180deg,#273443 0%,#000039 77%,#003f59 100%);
 }
 
 .greeting {
@@ -27,15 +27,21 @@ body {
 .parent-container {
   display: grid;
   /* gap: 1.5%; */
+  width: 100vw;
+  height: 60vh;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr auto;
-  height: auto;
-  margin: auto;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+  align-content: center;
+  /* height: auto; */
+  /* margin: auto; */
 }
 
 .box {
   width: 40vw;
   height: 20vh;
+  border-radius: 15px;
+  box-shadow: 10px 15px 10px #000000;
 }
 
 .hydration {
