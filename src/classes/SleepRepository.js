@@ -1,6 +1,6 @@
 class SleepRepository {
-  constructor() {
-    
+  constructor(data) {
+    this.usersSleep = data;
   }
 }
 
