@@ -1,3 +1,5 @@
+const dayjs = require('dayjs');
+
 class SleepRepository {
   constructor(data) {
     this.usersSleep = data;
@@ -5,5 +7,5 @@ class SleepRepository {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = Hydration;
+  module.exports = SleepRepository;
 }
