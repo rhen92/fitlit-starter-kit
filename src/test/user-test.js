@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const User = require('../classes/user');
+const User = require('../classes/User');
 
 describe('User', () => {
   let user;
