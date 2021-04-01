@@ -25,7 +25,9 @@ describe('SleepRepository', () => {
     expect(sleepRepository.getAvgHoursSlept(1)).to.equal(4);
   });
 
-  
+  it('should calculate average sleep quality for a specific user', () => {
+    expect(sleepRepository.getAvgSleepQuality(1)).to.equal(2);
+  });
 
   it('should calculate average sleep quality from all users', () => {
     expect(sleepRepository.getAllAvgSleepQuality()).to.equal(3);
