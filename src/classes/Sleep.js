@@ -5,6 +5,9 @@ class Sleep {
     this.hoursSlept = userSleepData.hoursSlept;
     this.sleepQuality = userSleepData.sleepQuality;
   }
+
+
+
   
 }
 
