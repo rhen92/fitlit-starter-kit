@@ -8,7 +8,7 @@ describe('SleepRepository', () => {
 
   beforeEach(() => {
     sleep1 = new Sleep({ "userID": 1, date:"2021/04/01", "hoursSlept": 5.5, "sleepQuality": 3.3 });
-    sleep2 = new Sleep({ "userID": 1, date: "2021/04/01", "hoursSlept": 6.4, "sleepQuality": 3.7 });
+    sleep2 = new Sleep({ "userID": 1, date: "2021/03/31", "hoursSlept": 6.4, "sleepQuality": 3.7 });
     sleep3 = new Sleep({ "userID": 3, date: "2021/04/01", "hoursSlept": 7.2, "sleepQuality": 2.9 });
     sleepRepository = new SleepRepository([sleep1, sleep2, sleep3]);
   });
@@ -33,5 +33,7 @@ describe('SleepRepository', () => {
     expect(sleepRepository.getAllAvgSleepQuality()).to.equal(3);
   });
 
-  
+  it('should be able to determine hours slept each day based on a given week', () => {
+    expect(sleepRepository.getHoursSleptByWeek(1, "2021/04/01")).to.deep.equal({ '2021/04/01': 5.5, '2021/03/31': 6.4 });
+  });
 });
