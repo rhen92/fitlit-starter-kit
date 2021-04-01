@@ -22,6 +22,12 @@ describe('SleepRepository', () => {
   });
 
   it('should calculate average sleep per day', () => {
-    expect(sleepRepository.getAvgHoursSlept()).to.equal(6)
+    expect(sleepRepository.getAvgHoursSlept()).to.equal(6);
   });
+
+  it('should calculate average sleep quality per day over all time', () => {
+    expect(sleepRepository.getAvgSleepQuality()).to.equal(3);
+  });
+
+
 });
