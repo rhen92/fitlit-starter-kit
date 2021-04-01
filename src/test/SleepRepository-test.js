@@ -33,5 +33,5 @@ describe('SleepRepository', () => {
     expect(sleepRepository.getAllAvgSleepQuality()).to.equal(3);
   });
 
-
+  
 });
