@@ -5,20 +5,34 @@ class SleepRepository {
     this.usersSleep = data;
   }
 
-  getAvgHoursSlept() {
+  getAvgHoursSlept(id) {
     const avgHoursSlept = this.usersSleep.reduce((total, sleep) => {
-      return total += sleep.hoursSlept;
+      if (id === sleep.userID) {
+        total += sleep.hoursSlept;
+      }
+      return total
     }, 0) / this.usersSleep.length;
     return Math.round(avgHoursSlept);
   }
 
-  getAvgSleepQuality() {
+  getAvgSleepQuality(id) {
     const avgSleepQuality = this.usersSleep.reduce((total, sleep) => {
-      return total += sleep.sleepQuality;
+      if (id === sleep.userID) {
+        total += sleep.sleepQuality;
+      }
+      return total
     }, 0) / this.usersSleep.length;
     console.log(avgSleepQuality);
     return Math.round(avgSleepQuality);
   }
+
+  getAllAvgSleepQuality() {
+    const avgSleepQuality = this.usersSleep.reduce((total, sleep) => {
+      return total += sleep.sleepQuality;
+    }, 0) / this.usersSleep.length;
+    return Math.round(avgSleepQuality);
+  }
+
 }
 
 if (typeof module !== 'undefined') {

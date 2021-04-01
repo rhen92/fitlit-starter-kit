@@ -8,7 +8,7 @@ describe('SleepRepository', () => {
 
   beforeEach(() => {
     sleep1 = new Sleep({ "userID": 1, date:"2021/04/01", "hoursSlept": 5.5, "sleepQuality": 3.3 });
-    sleep2 = new Sleep({ "userID": 2, date: "2021/04/01", "hoursSlept": 6.4, "sleepQuality": 3.7 });
+    sleep2 = new Sleep({ "userID": 1, date: "2021/04/01", "hoursSlept": 6.4, "sleepQuality": 3.7 });
     sleep3 = new Sleep({ "userID": 3, date: "2021/04/01", "hoursSlept": 7.2, "sleepQuality": 2.9 });
     sleepRepository = new SleepRepository([sleep1, sleep2, sleep3]);
   });
@@ -21,12 +21,14 @@ describe('SleepRepository', () => {
     expect(sleepRepository).to.be.an.instanceof(SleepRepository);
   });
 
-  it('should calculate average sleep per day', () => {
-    expect(sleepRepository.getAvgHoursSlept()).to.equal(6);
+  it('should calculate average hours sleep per day for a specific user', () => {
+    expect(sleepRepository.getAvgHoursSlept(1)).to.equal(4);
   });
 
-  it('should calculate average sleep quality per day over all time', () => {
-    expect(sleepRepository.getAvgSleepQuality()).to.equal(3);
+  
+
+  it('should calculate average sleep quality from all users', () => {
+    expect(sleepRepository.getAllAvgSleepQuality()).to.equal(3);
   });
 
 
