@@ -20,4 +20,8 @@ describe('SleepRepository', () => {
   it('should be an instance of Sleep', () => {
     expect(sleepRepository).to.be.an.instanceof(SleepRepository);
   });
+
+  it('should calculate average sleep per day', () => {
+    expect(sleepRepository.getAvgHoursSlept()).to.equal(6)
+  });
 });

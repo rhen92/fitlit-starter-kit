@@ -6,10 +6,10 @@ class SleepRepository {
   }
 
   getAvgHoursSlept() {
-    const avgHoursSlept = this.usersSleep.reduce((sum, data) => {
-      sum += data.hoursSlept;
-      return sum
+    const avgHoursSlept = this.usersSleep.reduce((total, sleep) => {
+      return total += sleep.hoursSlept;
     }, 0) / this.usersSleep.length;
+    return Math.round(avgHoursSlept);
   }
 }
 
