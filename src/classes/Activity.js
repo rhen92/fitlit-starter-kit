@@ -15,3 +15,17 @@ class Activity {
   getMinutesActive() {
     return { [this.date]: this.minutesActive };
   }
+
+  eachStepGoal(goal) {
+    let goalMet = (this.numSteps >= goal) ? true : false;
+    return goalMet;
+  }
+}
+if (typeof module !== 'undefined') {
+  module.exports = Activity;
+}
+
+
+
+
+
