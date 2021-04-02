@@ -54,3 +54,9 @@ describe('Activity Repository', () => {
     const stairRecord = activityRepository.getAllTimeStairClimbing(2);
     expect(stairRecord).to.equal(22);
   });
+
+  it('should find average stairs climbed, steps taken, and minutes active for a specified date for all users', () => {
+    const activityInfo = activityRepository.getAvgInfo('2021/03/29');
+    expect(activityInfo).to.deep.equal({ avgStairsClimed: 21, avgStepsTaken: 9702.5, avgMinutesActive: 62.5 });
+  });
+})
