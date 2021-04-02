@@ -32,7 +32,25 @@ class ActivityRepository {
     let stairAmount = userInfo.map(stairs => stairs.flightsOfStairs);
     return Math.max(...stairAmount);
   }
-  
+
+  getAvgInfo(day) {
+    let usersActivityDetails = this.usersActivity.filter(activity => day === activity.date);
+    let avgStairs = usersActivityDetails.reduce((obj, activity) => {
+      return obj += activity.flightsOfStairs;
+    }, 0) / usersActivityDetails.length;
+    let avgSteps = usersActivityDetails.reduce((obj, activity) => {
+      return obj += activity.numSteps;
+    }, 0) / usersActivityDetails.length;
+    let avgMinutes = usersActivityDetails.reduce((obj, activity) => {
+      return obj += activity.minutesActive;
+    }, 0) / usersActivityDetails.length;
+    let avgDetails = {
+      avgStairsClimed: avgStairs,
+      avgStepsTaken: avgSteps,
+      avgMinutesActive: avgMinutes
+    };
+    return avgDetails;
+  }
 }
 
 if (typeof module !== 'undefined') {
