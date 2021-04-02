@@ -28,9 +28,20 @@ describe('Activity Repository', () => {
     activity3 = new Activity({ userID: 2, date: '2021/03/30', numSteps: 8800, minutesActive: 55, flightsOfStairs: 19 });
     activityRepository = new ActivityRepository([activity1, activity2, activity3]);
   });
+
   it('should be a function', () => {
     expect(ActivityRepository).to.be.a('function');
   });
+
   it('should be an instance of Activity', () => {
     expect(activityRepository).to.be.an.instanceof(ActivityRepository);
+  });
+
+  it('should hold all activity objects', () => {
+    expect(activityRepository.usersActivity).to.deep.equal([activity1, activity2, activity3]);
+  });
+
+  it('should get average minutes active for a given week', () => {
+    const avgActivity = activityRepository.getActiveMinutesAvgWeek(2, '2021/03/30');
+    expect(avgActivity).to.equal(17);
   });
