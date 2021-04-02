@@ -45,7 +45,7 @@ describe('SleepRepository', () => {
     expect(sleepRepository.findUsersWithMostSleep("2021/04/01")).to.deep.equal([3]);
   });
 
-  it.skip('should be able to return all users with sleep quality greater than 3 for a given week', () => {
-    expect(sleepRepository.findGoodSleepByWeek()).to.deep.equal();
+  it('should be able to return all users with sleep quality greater than 3 for a given week', () => {
+    expect(sleepRepository.findGoodSleepByWeek()).to.deep.equal([1]);
   });
 });

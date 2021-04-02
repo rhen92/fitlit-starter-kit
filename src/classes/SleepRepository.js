@@ -87,21 +87,12 @@ class SleepRepository {
     let day5 = dayjs(day4).add(-1, 'day').format('YYYY/MM/DD');
     let day6 = dayjs(day5).add(-1, 'day').format('YYYY/MM/DD');
     let day7 = dayjs(day6).add(-1, 'day').format('YYYY/MM/DD');
-    let allGoodSleep = this.usersSleep.filter(data => {
-      if (allGoodSleep.userID) {
-        allGoodSleepdata.sleepQuality > 3;
-      } 
-    })
-    console.log(allGoodSleep);
+    const allGoodSleep = this.usersSleep.filter(data => data.sleepQuality > 3)
+    const userMap = allGoodSleep.map(data => data.userID);
+    const uniqueUsers = [...new Set(userMap)];
+    return uniqueUsers;
   }
 }
-
-//filter first to find where we have sleep quality > 3
-//after filtering, reduce to get just user ID
-//ensure we don't have duplicates
-//find name of user based on ID
-//store names in array to return
-
 
 if (typeof module !== 'undefined') {
   module.exports = SleepRepository;
