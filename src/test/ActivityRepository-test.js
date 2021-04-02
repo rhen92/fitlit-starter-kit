@@ -49,3 +49,8 @@ describe('Activity Repository', () => {
   it('should find all the days where thh user exceeded their goal', () => {
     activityRepository.getDaysExceededGoal(user1);
   });
+
+  it('should find all time stair climbing record', () => {
+    const stairRecord = activityRepository.getAllTimeStairClimbing(2);
+    expect(stairRecord).to.equal(22);
+  });
