@@ -45,3 +45,7 @@ describe('Activity Repository', () => {
     const avgActivity = activityRepository.getActiveMinutesAvgWeek(2, '2021/03/30');
     expect(avgActivity).to.equal(17);
   });
+
+  it('should find all the days where thh user exceeded their goal', () => {
+    activityRepository.getDaysExceededGoal(user1);
+  });
