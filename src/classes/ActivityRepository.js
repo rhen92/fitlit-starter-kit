@@ -26,6 +26,13 @@ class ActivityRepository {
     let exceededGoalDays = userActivityInfo.filter(activity => activity.numSteps >= user.dailyStepGoal);
     return exceededGoalDays.map(goal => goal.date);
   }
+
+  getAllTimeStairClimbing(id) {
+    let userInfo = this.usersActivity.filter(user => user.userID === id);
+    let stairAmount = userInfo.map(stairs => stairs.flightsOfStairs);
+    return Math.max(...stairAmount);
+  }
+  
 }
 
 if (typeof module !== 'undefined') {
