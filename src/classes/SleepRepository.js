@@ -66,6 +66,20 @@ class SleepRepository {
     return weekSleepQuality;
   }
 
+  findUsersWithMostSleep(day) {
+    const allDailyData = this.usersSleep.filter(data => data.date === day);
+    const sortedData = allDailyData.sort((a, b) => {
+      return b.hoursSlept - a.hoursSlept;
+    });
+    const mostSleep = [];
+    const findMost = sortedData.forEach(data => {
+      if (sortedData[0].hoursSlept === data.hoursSlept) {
+        mostSleep.push(data.userID);
+      }
+    });
+    return mostSleep;
+  }
+
   findGoodSleepByWeek(date) {
     let day2 = dayjs(date).add(-1, 'day').format('YYYY/MM/DD');
     let day3 = dayjs(day2).add(-1, 'day').format('YYYY/MM/DD');
