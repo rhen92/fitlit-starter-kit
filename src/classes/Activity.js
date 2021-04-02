@@ -21,6 +21,7 @@ class Activity {
     return goalMet;
   }
 }
+
 if (typeof module !== 'undefined') {
   module.exports = Activity;
 }
