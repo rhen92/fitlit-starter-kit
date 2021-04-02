@@ -41,7 +41,7 @@ describe('SleepRepository', () => {
     expect(sleepRepository.getSleepQualityByWeek(1, "2021/04/01")).to.deep.equal({ '2021/04/01': 3.3, '2021/03/31': 3.7 });
   });
 
-  it('should be able to return all users with sleep quality greater than 3 for a given week', () => {
+  it.skip('should be able to return all users with sleep quality greater than 3 for a given week', () => {
     expect(sleepRepository.findGoodSleepByWeek()).to.deep.equal();
   });
 });

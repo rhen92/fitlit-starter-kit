@@ -24,4 +24,8 @@ describe('Sleep', () => {
     expect(sleep.hoursSlept).to.equal(7.2);
     expect(sleep.sleepQuality).to.equal(4.4);
   });
+
+  it('should find how many hours slept by a specific day', () => {
+    expect(sleep.getSleepByDay()).to.equal(7.2);
+  })
 });

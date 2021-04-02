@@ -74,10 +74,10 @@ class SleepRepository {
     let day6 = dayjs(day5).add(-1, 'day').format('YYYY/MM/DD');
     let day7 = dayjs(day6).add(-1, 'day').format('YYYY/MM/DD');
     let allGoodSleep = this.usersSleep.filter(data => {
-      if (!allGoodSleep.userID) {
-        allGoodSleepdata.sleepQuality > 3);
+      if (allGoodSleep.userID) {
+        allGoodSleepdata.sleepQuality > 3;
       } 
-    }
+    })
     console.log(allGoodSleep);
   }
 }
