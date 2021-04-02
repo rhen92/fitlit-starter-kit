@@ -16,7 +16,7 @@ class Activity {
     return { [this.date]: this.minutesActive };
   }
 
-  eachStepGoal(goal) {
+  reachStepGoal(goal) {
     let goalMet = (this.numSteps >= goal) ? true : false;
     return goalMet;
   }
