@@ -20,6 +20,12 @@ class ActivityRepository {
     }, 0) / 7;
     return Math.round(weekActivity);
   }
+
+  getDaysExceededGoal(user) {
+    let userActivityInfo = this.usersActivity.filter(data => data.userID === user.id);
+    let exceededGoalDays = userActivityInfo.filter(activity => activity.numSteps >= user.dailyStepGoal);
+    return exceededGoalDays.map(goal => goal.date);
+  }
 }
 
 if (typeof module !== 'undefined') {
