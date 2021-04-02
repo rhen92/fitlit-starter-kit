@@ -7,7 +7,7 @@ describe('SleepRepository', () => {
   let sleep1, sleep2, sleep3, sleepRepository
 
   beforeEach(() => {
-    sleep1 = new Sleep({ "userID": 1, date:"2021/04/01", "hoursSlept": 5.5, "sleepQuality": 3.3 });
+    sleep1 = new Sleep({ "userID": 1, date: "2021/04/01", "hoursSlept": 5.5, "sleepQuality": 3.3 });
     sleep2 = new Sleep({ "userID": 1, date: "2021/03/31", "hoursSlept": 6.4, "sleepQuality": 3.7 });
     sleep3 = new Sleep({ "userID": 3, date: "2021/04/01", "hoursSlept": 7.2, "sleepQuality": 2.9 });
     sleepRepository = new SleepRepository([sleep1, sleep2, sleep3]);
