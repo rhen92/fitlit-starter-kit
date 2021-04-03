@@ -56,12 +56,35 @@ let hydroBarChart = new Chart(hydroChart, {
 });
 
 let sleepBarChart = new Chart(sleepChart, {
-  type: 'bar',
+  type: 'line',
   data: {
     //labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
     datasets: [{
-      label: 'Water Drank',
-      data: [],
+      label: 'Hours Slept',
+      data: displayWeekSleepHours(),
+      backgroundColor: [
+        'rgba(255, 99, 132, .5)',
+        'rgba(54, 162, 235, .5)',
+        'rgba(255, 206, 86, .5)',
+        'rgba(75, 192, 192, .5)',
+        'rgba(153, 102, 255, .5)',
+        'rgba(255, 159, 64, .5)',
+        'rgb(48, 142, 161, .5)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgb(48, 142, 161, 1)'
+      ],
+      borderWidth: 1
+    },
+    {
+      label: 'Sleep Quality',
+      data: displayWeekSleepQuality(),
       backgroundColor: [
         'rgba(255, 99, 132, .5)',
         'rgba(54, 162, 235, .5)',
@@ -146,6 +169,13 @@ function displayTodaySleep() {
 function displayAvgSleep() {
   const sleepHoursAvg = currentSleep.getAvgHoursSlept(currentUser.id);
   const sleepQualityAvg = currentSleep.getAvgSleepQuality(currentUser.id);
-  console.log(sleepHoursAvg, sleepQualityAvg);
   avgSleep.innerText = `Avg Hours Slept: ${sleepHoursAvg} | Quality: ${sleepQualityAvg}`;
+}
+
+function displayWeekSleepHours() {
+  return currentSleep.getHoursSleptByWeek(currentUser.id, getDate());
+}
+
+function displayWeekSleepQuality() {
+  return currentSleep.getSleepQualityByWeek(currentUser.id, getDate());
 }

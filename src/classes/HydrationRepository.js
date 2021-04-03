@@ -26,7 +26,7 @@ class HydrationRepository {
     let weekDates = [day, day2, day3, day4, day5, day6, day7];
     let userHydration = this.usersHydration.filter(user => user.userID === id);
     let weekHydration = userHydration.reduce((obj, hydration) => {
-      if(weekDates.includes(hydration.date)) {
+      if (weekDates.includes(hydration.date)) {
         obj[hydration.date] = hydration.numOunces;
       }
       return obj;
