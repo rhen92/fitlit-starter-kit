@@ -9,9 +9,14 @@ const infoFriends = document.querySelector('#infoFriends');
 const date = document.querySelector('#todayDate');
 const todayOz = document.querySelector('#todayOz');
 const hydroChart = document.getElementById('hydroChart');
+const todaySleep = document.querySelector('#todaySleep');
+const avgSleep = document.querySelector('#avgSleep')
+const sleepChart = document.getElementById('sleepChart');
+
 
 const currentUser = new User(userData[0]);
 const currentHydration = new HydrationRepository(hydrationData);
+const currentSleep = new SleepRepository(sleepData);
 let { id, name, email, strideLength, dailyStepGoal, friends } = currentUser;
 let hydroBarChart = new Chart(hydroChart, {
   type: 'bar',
@@ -50,6 +55,66 @@ let hydroBarChart = new Chart(hydroChart, {
   }
 });
 
+let sleepBarChart = new Chart(sleepChart, {
+  type: 'line',
+  data: {
+    //labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+    datasets: [{
+      label: 'Hours Slept',
+      data: displayWeekSleepHours(),
+      backgroundColor: [
+        'rgba(255, 99, 132, .5)',
+        'rgba(54, 162, 235, .5)',
+        'rgba(255, 206, 86, .5)',
+        'rgba(75, 192, 192, .5)',
+        'rgba(153, 102, 255, .5)',
+        'rgba(255, 159, 64, .5)',
+        'rgb(48, 142, 161, .5)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgb(48, 142, 161, 1)'
+      ],
+      borderWidth: 1
+    },
+    {
+      label: 'Sleep Quality',
+      data: displayWeekSleepQuality(),
+      backgroundColor: [
+        'rgba(255, 99, 132, .5)',
+        'rgba(54, 162, 235, .5)',
+        'rgba(255, 206, 86, .5)',
+        'rgba(75, 192, 192, .5)',
+        'rgba(153, 102, 255, .5)',
+        'rgba(255, 159, 64, .5)',
+        'rgb(48, 142, 161, .5)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgb(48, 142, 161, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
 window.addEventListener('load', loadInfo);
 
 function loadInfo() {
@@ -58,6 +123,8 @@ function loadInfo() {
   displayInfoCard();
   displayDate();
   displayWaterDrank();
+  displayTodaySleep();
+  displayAvgSleep();
 }
 
 function displayStepGoal() {
@@ -91,4 +158,24 @@ function displayWeeksHydration() {
 function displayWaterDrank() {
   const waterToday = currentHydration.getNumOunces(currentUser.id, getDate());
   todayOz.innerText = `${waterToday} oz today!`
+}
+
+function displayTodaySleep() {
+  const sleepHoursToday = currentSleep.getSleepByDay(currentUser.id, getDate());
+  const sleepQualityToday = currentSleep.getSleepQualityByDay(currentUser.id, getDate());
+  todaySleep.innerText = `Hours Slept: ${sleepHoursToday} | Quality: ${sleepQualityToday}`;
+}
+
+function displayAvgSleep() {
+  const sleepHoursAvg = currentSleep.getAvgHoursSlept(currentUser.id);
+  const sleepQualityAvg = currentSleep.getAvgSleepQuality(currentUser.id);
+  avgSleep.innerText = `Avg Hours Slept: ${sleepHoursAvg} | Quality: ${sleepQualityAvg}`;
+}
+
+function displayWeekSleepHours() {
+  return currentSleep.getHoursSleptByWeek(currentUser.id, getDate());
+}
+
+function displayWeekSleepQuality() {
+  return currentSleep.getSleepQualityByWeek(currentUser.id, getDate());
 }
