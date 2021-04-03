@@ -1,5 +1,3 @@
-const dayjs = require('dayjs');
-
 class SleepRepository {
   constructor(data) {
     this.usersSleep = data;
@@ -32,7 +30,7 @@ class SleepRepository {
     return Math.round(avgSleepQuality);
   }
 
-  getHoursSleptByWeek(id, date) { 
+  getHoursSleptByWeek(id, date) {
     let day2 = dayjs(date).add(-1, 'day').format('YYYY/MM/DD');
     let day3 = dayjs(day2).add(-1, 'day').format('YYYY/MM/DD');
     let day4 = dayjs(day3).add(-1, 'day').format('YYYY/MM/DD');

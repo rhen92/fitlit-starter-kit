@@ -29,7 +29,7 @@ body {
 .parent-container {
   display: grid;
   width: 100vw;
-  height: 60vh;
+  height: 74vh;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   justify-items: center;

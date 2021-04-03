@@ -4,10 +4,6 @@ class Hydration {
     this.date = userHydrationData.date;
     this.numOunces = userHydrationData.numOunces;
   }
-
-  getNumOunces() {
-    return this.numOunces;
-  }
 }
 
 if(typeof module !== 'undefined') {
