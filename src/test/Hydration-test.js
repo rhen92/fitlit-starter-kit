@@ -23,8 +23,4 @@ describe('Hydration', () => {
     expect(hydration.date).to.equal('2021/03/29');
     expect(hydration.numOunces).to.equal(50);
   });
-
-  it('should return numOunces for specific day', () => {
-    expect(hydration.getNumOunces()).to.equal(50);
-  });
 });
