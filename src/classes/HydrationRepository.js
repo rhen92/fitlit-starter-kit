@@ -3,6 +3,12 @@ class HydrationRepository {
     this.usersHydration = data;
   }
 
+  getNumOunces(id, day) {
+    const userHydration = this.usersHydration.filter(user => user.userID === id);
+    const currentWater = userHydration.find(user => user.date === day);
+    return currentWater.numOunces;
+  }
+
   getFluidOuncesAllTime() {
     const avgFluidOunces = this.usersHydration.reduce((total, hydration) => {
       return total += hydration.numOunces;

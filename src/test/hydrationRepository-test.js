@@ -26,6 +26,10 @@ describe('Hydration Repository', () => {
     expect(hydrationRepository.usersHydration).to.deep.equal([hydration1, hydration2, hydration3]);
   });
 
+  it('should return numOunces for specific day', () => {
+    expect(hydration.getNumOunces(1, '2021/03/29')).to.equal(50);
+  });
+
   it('should get average fluid ounces consumed per day for all time', () => {
     const avgFluidOuncesAllTime = hydrationRepository.getFluidOuncesAllTime();
     expect(avgFluidOuncesAllTime).to.equal(53);
