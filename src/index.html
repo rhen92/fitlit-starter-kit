@@ -27,7 +27,9 @@
       <section class="parent-container">
         <section id="hydration" class="hydration box">
           <p>oz Drank</p>
-          <p>oz Drank Week</p>
+          <div>
+            <canvas id="hydroChart" class="hydro-chart"></canvas>
+          </div>
         </section>
         <section id="sleep" class="sleep box">
 
@@ -40,6 +42,14 @@
         </section>
       </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.1/chart.min.js"
+      integrity="sha512-2uu1jrAmW1A+SMwih5DAPqzFS2PI+OPw79OVLS4NJ6jGHQ/GmIVDDlWwz4KLO8DnoUmYdU8hTtFcp8je6zxbCg=="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../node_modules/dayjs/dayjs.min.js"></script>
+    <script type="text/javascript" src="../data/users.js"></script>
+    <script type="text/javascript" src="../data/hydration.js"></script>
+    <script type="text/javascript" src="../data/sleep.js"></script>
+    <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="./classes/Sleep.js"></script>
     <script type="text/javascript" src="./classes/SleepRepository.js"></script>
     <script type="text/javascript" src="./classes/Activity.js"></script>
@@ -48,16 +58,6 @@
     <script type="text/javascript" src="./classes/Hydration.js"></script>
     <script type="text/javascript" src="./classes/User.js"></script>
     <script type="text/javascript" src="./classes/UserRepository.js"></script>
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/hydration.js"></script>
-    <script type="text/javascript" src="../data/sleep.js"></script>
-    <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>
-
-<!-- info card with all of user's info
-Display First name prominently to welcome
-Display how user step goal compares to average among all users
-Display for water consumed today
--->
