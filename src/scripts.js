@@ -7,9 +7,11 @@ const infoEmail = document.querySelector('#infoEmail');
 const infoStride = document.querySelector('#infoStride');
 const infoFriends = document.querySelector('#infoFriends');
 const date = document.querySelector('#todayDate');
+const todayOz = document.querySelector('#todayOz');
 const hydroChart = document.getElementById('hydroChart');
 
-let currentUser = new User(userData[0]);
+const currentUser = new User(userData[0]);
+const currentHydration = new HydrationRepository(hydrationData);
 let { id, name, email, strideLength, dailyStepGoal, friends } = currentUser;
 let hydroBarChart = new Chart(hydroChart, {
   type: 'bar',
@@ -48,14 +50,14 @@ let hydroBarChart = new Chart(hydroChart, {
   }
 });
 
-window.addEventListener('load', greetUser);
+window.addEventListener('load', loadInfo);
 
-function greetUser() {
+function loadInfo() {
   greeting.innerText = `Welcome ${currentUser.getFirstName()}!`;
   displayStepGoal();
   displayInfoCard();
-  getDate();
   displayDate();
+  displayWaterDrank();
 }
 
 function displayStepGoal() {
@@ -72,8 +74,7 @@ function displayInfoCard() {
 }
 
 function getDate() {
-  const hydrationInfo = new HydrationRepository(hydrationData);
-  const dateForUser = hydrationInfo.usersHydration.filter(user => user.userID === 1);
+  const dateForUser = currentHydration.usersHydration.filter(user => user.userID === 1);
   const lastDate = dateForUser.length - 1;
   const finalDate = dateForUser[lastDate].date;
   return finalDate;
@@ -84,6 +85,10 @@ function displayDate() {
 }
 
 function displayWeeksHydration() {
-  let currentHydration = new HydrationRepository(hydrationData);
   return currentHydration.getFluidOuncesWeek(currentUser.id, getDate());
+}
+
+function displayWaterDrank() {
+  const waterToday = currentHydration.getNumOunces(currentUser.id, getDate());
+  todayOz.innerText = `${waterToday} oz today!`
 }
