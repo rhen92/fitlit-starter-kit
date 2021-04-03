@@ -10,12 +10,13 @@ const date = document.querySelector('#todayDate');
 const todayOz = document.querySelector('#todayOz');
 const hydroChart = document.getElementById('hydroChart');
 const todaySleep = document.querySelector('#todaySleep');
-const alltimeSleep = document.querySelector('#alltimeSleep');
+const avgSleep = document.querySelector('#avgSleep')
 const sleepChart = document.getElementById('sleepChart');
 
 
 const currentUser = new User(userData[0]);
 const currentHydration = new HydrationRepository(hydrationData);
+const currentSleep = new SleepRepository(sleepData);
 let { id, name, email, strideLength, dailyStepGoal, friends } = currentUser;
 let hydroBarChart = new Chart(hydroChart, {
   type: 'bar',
@@ -54,13 +55,13 @@ let hydroBarChart = new Chart(hydroChart, {
   }
 });
 
-let sleepChart = new Chart(sleepChart, {
+let sleepBarChart = new Chart(sleepChart, {
   type: 'bar',
   data: {
     //labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
     datasets: [{
       label: 'Water Drank',
-      data: //!!!!!DONT FORGET YOUR SLEEP FUNCTION!!!!
+      data: [],
       backgroundColor: [
         'rgba(255, 99, 132, .5)',
         'rgba(54, 162, 235, .5)',
@@ -99,6 +100,8 @@ function loadInfo() {
   displayInfoCard();
   displayDate();
   displayWaterDrank();
+  displayTodaySleep();
+  displayAvgSleep();
 }
 
 function displayStepGoal() {
@@ -132,4 +135,17 @@ function displayWeeksHydration() {
 function displayWaterDrank() {
   const waterToday = currentHydration.getNumOunces(currentUser.id, getDate());
   todayOz.innerText = `${waterToday} oz today!`
+}
+
+function displayTodaySleep() {
+  const sleepHoursToday = currentSleep.getSleepByDay(currentUser.id, getDate());
+  const sleepQualityToday = currentSleep.getSleepQualityByDay(currentUser.id, getDate());
+  todaySleep.innerText = `Hours Slept: ${sleepHoursToday} | Quality: ${sleepQualityToday}`;
+}
+
+function displayAvgSleep() {
+  const sleepHoursAvg = currentSleep.getAvgHoursSlept(currentUser.id);
+  const sleepQualityAvg = currentSleep.getAvgSleepQuality(currentUser.id);
+  console.log(sleepHoursAvg, sleepQualityAvg);
+  avgSleep.innerText = `Avg Hours Slept: ${sleepHoursAvg} | Quality: ${sleepQualityAvg}`;
 }

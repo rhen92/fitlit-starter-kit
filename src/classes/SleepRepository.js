@@ -3,23 +3,33 @@ class SleepRepository {
     this.usersSleep = data;
   }
 
+  getSleepByDay(id, day) {
+    const userSleepHours = this.usersSleep.filter(user => user.userID === id);
+    const currentSleepHours = userSleepHours.find(user => user.date === day);
+    return currentSleepHours.hoursSlept;
+  }
+
+  getSleepQualityByDay(id, day) {
+    const userSleepQuality = this.usersSleep.filter(user => user.userID === id);
+    const currentSleepQuality = userSleepQuality.find(user => user.date === day);
+    return currentSleepQuality.sleepQuality;
+  }
+
   getAvgHoursSlept(id) {
-    const avgHoursSlept = this.usersSleep.reduce((total, sleep) => {
-      if (id === sleep.userID) {
-        total += sleep.hoursSlept;
-      }
+    const userAvgHours = this.usersSleep.filter(user => user.userID === id);
+    const avgHoursSlept = userAvgHours.reduce((total, sleep) => {
+      total += sleep.hoursSlept
       return total
-    }, 0) / this.usersSleep.length;
+    }, 0) / userAvgHours.length; 
     return Math.round(avgHoursSlept);
   }
 
   getAvgSleepQuality(id) {
-    const avgSleepQuality = this.usersSleep.reduce((total, sleep) => {
-      if (id === sleep.userID) {
-        total += sleep.sleepQuality;
-      }
+    const userAvgQuality = this.usersSleep.filter(user => user.userID === id);
+    const avgSleepQuality = userAvgQuality.reduce((total, sleep) => {
+      total += sleep.sleepQuality;
       return total
-    }, 0) / this.usersSleep.length;
+    }, 0) / userAvgQuality.length;
     return Math.round(avgSleepQuality);
   }
 

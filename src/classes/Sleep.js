@@ -5,15 +5,6 @@ class Sleep {
     this.hoursSlept = userSleepData.hoursSlept;
     this.sleepQuality = userSleepData.sleepQuality;
   }
-
-  getSleepByDay() {
-    return this.hoursSlept;
-  }
-
-  getSleepQualityByDay() {
-    return this.sleepQuality;
-  }
-
 }
 
 if (typeof module !== 'undefined') {

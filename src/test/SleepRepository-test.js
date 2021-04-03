@@ -3,6 +3,7 @@ const expect = chai.expect;
 const Sleep = require('../classes/Sleep');
 const SleepRepository = require('../classes/SleepRepository');
 
+
 describe('SleepRepository', () => {
   let sleep1, sleep2, sleep3, sleepRepository
 
@@ -19,6 +20,14 @@ describe('SleepRepository', () => {
 
   it('should be an instance of Sleep', () => {
     expect(sleepRepository).to.be.an.instanceof(SleepRepository);
+  });
+
+  it('should return how many hours slept by a specific day', () => {
+    expect(sleepRepository.getSleepByDay(1, "2021/04/01")).to.equal(5.5);
+  });
+
+  it('should return sleep quality by a specific day', () => {
+    expect(sleepRepository.getSleepQualityByDay(1, "2021/04/01")).to.equal(3.3);
   });
 
   it('should calculate average hours sleep per day for a specific user', () => {
