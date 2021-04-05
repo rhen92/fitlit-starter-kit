@@ -41,6 +41,10 @@ describe('Activity Repository', () => {
     expect(activityRepository.usersActivity).to.deep.equal([activity1, activity2, activity3]);
   });
 
+  it('should find a user', () => {
+    expect(activityRepository.findUser(2)).to.deep.equal([activity2, activity3]);
+  })
+
   it('should get average minutes active for a given week', () => {
     const avgActivity = activityRepository.getActiveMinutesAvgWeek(2, '2021/03/30');
     expect(avgActivity).to.equal(17);
@@ -55,8 +59,18 @@ describe('Activity Repository', () => {
     expect(stairRecord).to.equal(22);
   });
 
-  it('should find average stairs climbed, steps taken, and minutes active for a specified date for all users', () => {
-    const activityInfo = activityRepository.getAvgInfo('2021/03/29');
-    expect(activityInfo).to.deep.equal({ avgStairsClimed: 21, avgStepsTaken: 9702.5, avgMinutesActive: 62.5 });
+  it('should find average stairs climbed for a specified date for all users', () => {
+    const activityInfo = activityRepository.getAvgInfo('2021/03/29', 'flightsOfStairs');
+    expect(activityInfo).to.equal(21);
   });
-})
+
+  it('should find steps taken for a specified date for all users', () => {
+    const activityInfo = activityRepository.getAvgInfo('2021/03/29', 'numSteps');
+    expect(activityInfo).to.equal(9702.5);
+  });
+
+  it('should find minutes active for a specified date for all users', () => {
+    const activityInfo = activityRepository.getAvgInfo('2021/03/29', 'minutesActive');
+    expect(activityInfo).to.equal(62.5)
+  });
+});
