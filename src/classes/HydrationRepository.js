@@ -1,3 +1,5 @@
+const dayjs = require('dayjs');
+
 class HydrationRepository {
   constructor(data) {
     this.usersHydration = data;
