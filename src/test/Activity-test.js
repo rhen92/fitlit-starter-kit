@@ -37,14 +37,6 @@ describe('Activity', () => {
     expect(activity1.flightsOfStairs).to.equal(20);
   });
 
-  it('should return the miles a user has walked for a specific date', () => {
-    expect(activity1.getMilesWalked(3.5)).to.deep.equal({ '2021/03/29': 4 });
-  });
-
-  it('should return the minutes a user was active for a specific date', () => {
-    expect(activity1.getMinutesActive()).to.deep.equal({ '2021/03/29': 60 });
-  });
-
   it('should tell if a step goal was not met', () => {
     expect(activity1.reachStepGoal(10000)).to.equal(false);
   });

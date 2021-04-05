@@ -1,3 +1,5 @@
+//const dayjs = require('dayjs');
+
 class SleepRepository {
   constructor(data) {
     this.usersSleep = data;
@@ -20,7 +22,7 @@ class SleepRepository {
     const avgHoursSlept = userAvgHours.reduce((total, sleep) => {
       total += sleep.hoursSlept
       return total
-    }, 0) / userAvgHours.length; 
+    }, 0) / userAvgHours.length;
     return Math.round(avgHoursSlept);
   }
 
