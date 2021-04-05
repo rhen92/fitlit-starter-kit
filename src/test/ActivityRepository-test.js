@@ -59,6 +59,21 @@ describe('Activity Repository', () => {
     expect(avgActivity).to.equal(17);
   });
 
+  it('should get minutes active for a given week', () => {
+    const avgActivityMins = activityRepository.getActivityTotalWeekForUser(2, '2021/03/30', 'minutesActive');
+    expect(avgActivityMins).to.deep.equal({ '2021/03/29': 65, '2021/03/30': 55 });
+  });
+
+  it('should get step count for a given week', () => {
+    const avgSteps = activityRepository.getActivityTotalWeekForUser(2, '2021/03/30', 'numSteps');
+    expect(avgSteps).to.deep.equal({ '2021/03/29': 9400, '2021/03/30': 8800 });
+  });
+
+  it('should get flights of stairs for a given week', () => {
+    const avgStairs = activityRepository.getActivityTotalWeekForUser(2, '2021/03/30', 'flightsOfStairs');
+    expect(avgStairs).to.deep.equal({ '2021/03/29': 22, '2021/03/30': 19 });
+  });
+
   it('should find all the days where thh user exceeded their goal', () => {
     activityRepository.getDaysExceededGoal(user1);
   });
