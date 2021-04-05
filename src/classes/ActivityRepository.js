@@ -10,6 +10,18 @@ class ActivityRepository {
     return userActivity;
   }
 
+  getMilesWalked(stride, id, day) {
+    let currentInfo = this.findUser(id).find(weekDay => weekDay.date === day);
+    let stepsPerMile = Math.round(5280 / stride);
+    let miles = Math.round(currentInfo.numSteps / stepsPerMile);
+    return miles;
+  }
+
+  getMinutesActive(id, day) {
+    let currentInfo = this.findUser(id).find(weekDay => weekDay.date === day);
+    return currentInfo.minutesActive;
+  }
+
   getActiveMinutesAvgWeek(id, day) {
     let day2 = dayjs(day).add(-1, 'day').format('YYYY/MM/DD');
     let day3 = dayjs(day2).add(-1, 'day').format('YYYY/MM/DD');

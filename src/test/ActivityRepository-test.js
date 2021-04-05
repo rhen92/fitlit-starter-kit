@@ -3,6 +3,7 @@ const expect = chai.expect;
 const User = require('../classes/User');
 const Activity = require('../classes/Activity');
 const ActivityRepository = require('../classes/ActivityRepository');
+
 describe('Activity Repository', () => {
   let user1, user2, activity1, activity2, activity3, activityRepository
   beforeEach(() => {
@@ -43,7 +44,15 @@ describe('Activity Repository', () => {
 
   it('should find a user', () => {
     expect(activityRepository.findUser(2)).to.deep.equal([activity2, activity3]);
-  })
+  });
+
+  it('should return the miles a user has walked for a specific date', () => {
+    expect(activityRepository.getMilesWalked(3.5, 1, '2021/03/29')).to.equal(7);
+  });
+
+  it('should return the minutes a user was active for a specific date', () => {
+    expect(activityRepository.getMinutesActive(1, '2021/03/29')).to.equal(60);
+  });
 
   it('should get average minutes active for a given week', () => {
     const avgActivity = activityRepository.getActiveMinutesAvgWeek(2, '2021/03/30');
