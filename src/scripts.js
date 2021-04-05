@@ -8,10 +8,8 @@ const infoStride = document.querySelector('#infoStride');
 const infoFriends = document.querySelector('#infoFriends');
 const date = document.querySelector('#todayDate');
 const todayOz = document.querySelector('#todayOz');
-const hydroChart = document.querySelector('#hydroChart');
 const todaySleep = document.querySelector('#todaySleep');
 const avgSleep = document.querySelector('#avgSleep')
-const sleepChart = document.querySelector('#sleepChart');
 const todayActivity = document.querySelector('#activityPara');
 
 
@@ -194,7 +192,60 @@ let activityLineChart = new Chart(activityChart, {
     }
   }
 });
-
+let numStepsCircleChart = new Chart(activityDoughnutChart, {
+  type: 'doughnut',
+  data: {
+    labels: ['Your Steps Today', 'Avg Users Steps'],
+    datasets: [{
+      data: displayNumStepsComparison(),
+      backgroundColor: [
+        'rgba(255, 99, 132, .5)',
+        'rgba(54, 162, 235, .5)',
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+      ],
+      hoverOffset: 4
+    }]
+  },
+});
+let minsActiveCircleChart = new Chart(minsDoughnutChart, {
+  type: 'doughnut',
+  data: {
+    labels: ['Your Minutes Active', 'Avg Users Minutes'],
+    datasets: [{
+      data: displayMinutesActiveComparison(),
+      backgroundColor: [
+        'rgba(255, 206, 86, .5)',
+        'rgba(28, 28, 145, .5)',
+      ],
+      borderColor: [
+        'rgba(255, 206, 86, 1)',
+        'rgba(28, 28, 145, 1)',
+      ],
+      hoverOffset: 4
+    }]
+  },
+});
+let flightStairsCircleChart = new Chart(stairsDoughnutChart, {
+  type: 'doughnut',
+  data: {
+    labels: ['Your Flights Climbed', 'Avg Users Flights Climbed'],
+    datasets: [{
+      data: displayStairsClimbedComparison(),
+      backgroundColor: [
+        'rgba(153, 102, 255, .5)',
+        'rgb(0, 212, 205, .5)',
+      ],
+      borderColor: [
+        'rgba(153, 102, 255, 1)',
+        'rgb(0, 212, 205, 1)',
+      ],
+      hoverOffset: 4
+    }]
+  },
+});
 window.addEventListener('load', loadInfo);
 
 function loadInfo() {
@@ -234,55 +285,71 @@ function displayDate() {
 }
 
 function displayWeeksHydration() {
-  return currentHydration.getFluidOuncesWeek(currentUser.id, getDate());
+  return currentHydration.getFluidOuncesWeek(id, getDate());
 }
 
 function displayWaterDrank() {
-  const waterToday = currentHydration.getNumOunces(currentUser.id, getDate());
+  const waterToday = currentHydration.getNumOunces(id, getDate());
   todayOz.innerText = `${waterToday} oz today!`
 }
 
 function displayTodaySleep() {
-  const sleepHoursToday = currentSleep.getSleepByDay(currentUser.id, getDate());
-  const sleepQualityToday = currentSleep.getSleepQualityByDay(currentUser.id, getDate());
+  const sleepHoursToday = currentSleep.getSleepByDay(id, getDate());
+  const sleepQualityToday = currentSleep.getSleepQualityByDay(id, getDate());
   todaySleep.innerText = `Hours Slept: ${sleepHoursToday} | Quality: ${sleepQualityToday}`;
 }
 
 function displayAvgSleep() {
-  const sleepHoursAvg = currentSleep.getAvgHoursSlept(currentUser.id);
-  const sleepQualityAvg = currentSleep.getAvgSleepQuality(currentUser.id);
+  const sleepHoursAvg = currentSleep.getAvgHoursSlept(id);
+  const sleepQualityAvg = currentSleep.getAvgSleepQuality(id);
   avgSleep.innerText = `Avg Hours Slept: ${sleepHoursAvg} | Quality: ${sleepQualityAvg}`;
 }
 
 function displayWeekSleepHours() {
-  return currentSleep.getHoursSleptByWeek(currentUser.id, getDate());
+  return currentSleep.getHoursSleptByWeek(id, getDate());
 }
 
 function displayWeekSleepQuality() {
-  return currentSleep.getSleepQualityByWeek(currentUser.id, getDate());
+  return currentSleep.getSleepQualityByWeek(id, getDate());
+}
+
+function getTodayInfo() {
+  let activityPerUser = currentActivity.findUser(id);
+  let activityPerDate = activityPerUser.find(weekDay => weekDay.date === getDate());
+  return activityPerDate;
+}
+
+function displayNumStepsComparison() {
+  return [getTodayInfo().numSteps, currentActivity.getAvgInfo(getDate(), 'numSteps')];
+}
+
+function displayMinutesActiveComparison() {
+  return [getTodayInfo().minutesActive, currentActivity.getAvgInfo(getDate(), 'minutesActive')];
+}
+
+function displayStairsClimbedComparison() {
+  return [getTodayInfo().flightsOfStairs, currentActivity.getAvgInfo(getDate(), 'flightsOfStairs')];
 }
 
 function displayTodaySteps() {
-  let activityPerUser = currentActivity.findUser(currentUser.id);
-  let activityPerDate = activityPerUser.find(weekDay => weekDay.date === getDate());
-  todaySteps.innerText = `Today's Steps: ${activityPerDate.numSteps}`
+  todaySteps.innerText = `Today's Steps: ${getTodayInfo().numSteps}`;
 }
 
 function displayActivity() {
-  let activityPerUser = currentActivity.findUser(currentUser.id);
-  let minutesMoving = currentActivity.getMinutesActive(currentUser.id, getDate());
-  let milesWalked = currentActivity.getMilesWalked(currentUser.strideLength, currentUser.id, getDate());
+  let activityPerUser = currentActivity.findUser(id);
+  let minutesMoving = currentActivity.getMinutesActive(id, getDate());
+  let milesWalked = currentActivity.getMilesWalked(strideLength, id, getDate());
   todayActivity.innerText = `Minutes Active: ${minutesMoving} | Miles Walked: ${milesWalked}`;
 }
 
 function displayWeekNumSteps() {
-  return currentActivity.getActivityTotalWeekForUser(currentUser.id, getDate(), 'numSteps');
+  return currentActivity.getActivityTotalWeekForUser(id, getDate(), 'numSteps');
 }
 
 function displayWeekMinsActive() {
-  return currentActivity.getActivityTotalWeekForUser(currentUser.id, getDate(), 'minutesActive');
+  return currentActivity.getActivityTotalWeekForUser(id, getDate(), 'minutesActive');
 }
 
 function displayWeekFlightStairs() {
-  return currentActivity.getActivityTotalWeekForUser(currentUser.id, getDate(), 'flightsOfStairs');
+  return currentActivity.getActivityTotalWeekForUser(id, getDate(), 'flightsOfStairs');
 }
