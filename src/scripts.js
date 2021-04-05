@@ -113,63 +113,87 @@ let sleepLineChart = new Chart(sleepChart, {
     }
   }
 });
-// let activityLineChart = new Chart(activityChart,   type: 'line',
-//   data: {
-//     datasets: [{
-//       label: 'Hours Slept',
-//       data: displayWeekSleepHours(),
-//       backgroundColor: [
-//         'rgba(255, 99, 132, .5)',
-//         'rgba(54, 162, 235, .5)',
-//         'rgba(255, 206, 86, .5)',
-//         'rgba(75, 192, 192, .5)',
-//         'rgba(153, 102, 255, .5)',
-//         'rgba(255, 159, 64, .5)',
-//         'rgb(48, 142, 161, .5)'
-//       ],
-//       borderColor: [
-//         'rgba(255, 99, 132, 1)',
-//         'rgba(54, 162, 235, 1)',
-//         'rgba(255, 206, 86, 1)',
-//         'rgba(75, 192, 192, 1)',
-//         'rgba(153, 102, 255, 1)',
-//         'rgba(255, 159, 64, 1)',
-//         'rgb(48, 142, 161, 1)'
-//       ],
-//       borderWidth: 1
-//     },
-//     {
-//       label: 'Sleep Quality',
-//       data: displayWeekSleepQuality(),
-//       backgroundColor: [
-//         'rgba(255, 99, 132, .5)',
-//         'rgba(54, 162, 235, .5)',
-//         'rgba(255, 206, 86, .5)',
-//         'rgba(75, 192, 192, .5)',
-//         'rgba(153, 102, 255, .5)',
-//         'rgba(255, 159, 64, .5)',
-//         'rgb(48, 142, 161, .5)'
-//       ],
-//       borderColor: [
-//         'rgba(255, 99, 132, 1)',
-//         'rgba(54, 162, 235, 1)',
-//         'rgba(255, 206, 86, 1)',
-//         'rgba(75, 192, 192, 1)',
-//         'rgba(153, 102, 255, 1)',
-//         'rgba(255, 159, 64, 1)',
-//         'rgb(48, 142, 161, 1)'
-//       ],
-//       borderWidth: 1
-//     }]
-//   },
-//   options: {
-//     scales: {
-//       y: {
-//         beginAtZero: true
-//       }
-//     }
-//   }
-// });)
+let activityLineChart = new Chart(activityChart, {
+  type: 'line',
+  data: {
+    datasets: [{
+      label: 'Number of Steps',
+      data: displayWeekNumSteps(),
+      backgroundColor: [
+        'rgba(255, 99, 132, .5)',
+        'rgba(54, 162, 235, .5)',
+        'rgba(255, 206, 86, .5)',
+        'rgba(75, 192, 192, .5)',
+        'rgba(153, 102, 255, .5)',
+        'rgba(255, 159, 64, .5)',
+        'rgb(48, 142, 161, .5)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgb(48, 142, 161, 1)'
+      ],
+      borderWidth: 1
+    },
+    {
+      label: 'Minutes Active',
+      data: displayWeekMinsActive(),
+      backgroundColor: [
+        'rgba(255, 99, 132, .5)',
+        'rgba(54, 162, 235, .5)',
+        'rgba(255, 206, 86, .5)',
+        'rgba(75, 192, 192, .5)',
+        'rgba(153, 102, 255, .5)',
+        'rgba(255, 159, 64, .5)',
+        'rgb(48, 142, 161, .5)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgb(48, 142, 161, 1)'
+      ],
+      borderWidth: 1
+    },
+    {
+      label: 'Flights of Stairs',
+      data: displayWeekFlightStairs(),
+      backgroundColor: [
+        'rgba(255, 99, 132, .5)',
+        'rgba(54, 162, 235, .5)',
+        'rgba(255, 206, 86, .5)',
+        'rgba(75, 192, 192, .5)',
+        'rgba(153, 102, 255, .5)',
+        'rgba(255, 159, 64, .5)',
+        'rgb(48, 142, 161, .5)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgb(48, 142, 161, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
 
 window.addEventListener('load', loadInfo);
 
@@ -249,4 +273,16 @@ function displayActivity() {
   let minutesMoving = currentActivity.getMinutesActive(currentUser.id, getDate());
   let milesWalked = currentActivity.getMilesWalked(currentUser.strideLength, currentUser.id, getDate());
   todayActivity.innerText = `Minutes Active: ${minutesMoving} | Miles Walked: ${milesWalked}`;
+}
+
+function displayWeekNumSteps() {
+  return currentActivity.getActivityTotalWeekForUser(currentUser.id, getDate(), 'numSteps');
+}
+
+function displayWeekMinsActive() {
+  return currentActivity.getActivityTotalWeekForUser(currentUser.id, getDate(), 'minutesActive');
+}
+
+function displayWeekFlightStairs() {
+  return currentActivity.getActivityTotalWeekForUser(currentUser.id, getDate(), 'flightsOfStairs');
 }
