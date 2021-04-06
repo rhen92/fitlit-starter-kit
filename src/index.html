@@ -3,30 +3,32 @@
   <head>
     <meta charset="UTF-8">
     <title>Avocado Fit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <header>
-      <h2>Avocado Fit</h2>
+      <h2 >Avocado Fit</h2>
       <h3 id="todayDate">Date Placeholder</h3>
     </header>
     <section id="infoCard" class="info-card">
-      <h4 id="infoName">Name placeholder</h4>
-      <h4 id="infoEmail">Email placeholder</h4>
-      <h4 id="infoStride">Stride length placeholder</h4>
-      <h4 id="infoFriends">Friends placeholder</h4>
+      <p id="infoName" class="info-p">Name placeholder</p>
+      <p id="infoEmail" class="info-p">Email placeholder</p>
+      <p id="infoStride" class="info-p">Stride length placeholder</p>
+      <p id="infoFriends" class="info-p">Friends placeholder</p>
     </section>
     <main>
-      <h1 id="greeting" class="greeting">Greetings, ~~USER~~</h1>
       <section id="steps" class="steps">
-        <h2 id="todaySteps">Today's Steps:</h2>
-        <h3 id="userStepGoal">Your Goal:</h3>
-        <h3 id="averageStepGoal">Average User Goal:</h3>
+        <p id="greeting" class="greeting">Greetings, ~~USER~~</p>
+        <p id="todaySteps" class="p-steps">Today's Steps:</p>
+        <p id="userStepGoal" class="p-steps">Your Goal:</p>
+        <p id="averageStepGoal" class="p-steps">Average User Goal:</p>
       </section>
       <section class="parent-container">
         <section id="hydration" class="hydration box">
-          <p id="todayOz">oz Drank</p>
-          <div>
+          <p id="todayOz" class="today-oz">oz Drank</p>
+          <div class="hydro-container">
             <canvas id="hydroChart" class="hydro-chart"></canvas>
           </div>
         </section>
@@ -44,13 +46,13 @@
           </div>
         </section>
         <section id="activityAverage" class="activity-average box">
-          <div>
+          <div style="position: relative; height:12vh; width:12vw">
             <canvas id="activityDoughnutChart" class="activity-doughnut-chart"></canvas>
           </div>
-          <div>
+          <div style="position: relative; height:12vh; width:12vw">
             <canvas id="minsDoughnutChart" class="mins-doughnut-chart"></canvas>
           </div>
-          <div>
+          <div style="position: relative; height:12vh; width:12vw">
             <canvas id="stairsDoughnutChart" class="stairs-doughnut-chart"></canvas>
           </div>
         </section>
