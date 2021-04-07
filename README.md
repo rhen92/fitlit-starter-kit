@@ -9,12 +9,12 @@
 * NPM Packages: Mocha, Chai, Chartjs, Dayjs
 * HTML & CSS
 
-## Setup + Run Instructions:
-* 
-  * 
+## Deploy Link
+* [Click here to deploy Avocado Fit](https://rhen92.github.io/fitlit-starter-kit/src/index.html)
 
 ## Visual Demo:
-  ![GIF description](gif url)
+![GIF demonstrating how to toggle chart labels](https://media.giphy.com/media/4q7WvSp08SptxtMI7L/giphy.gif)
+  * Click chart labels for line graphs to toggle displays
 
 ## Learning Goals
 * The project spec & rubric can be found [here](https://frontend.turing.io/projects/fitlit.html)
@@ -25,4 +25,6 @@
   * Implement a robust test suite using TDD
 
 ## Future Additions
-* 
+* Login page
+* Movable / rearranble boxes
+* Ability to put in current data
