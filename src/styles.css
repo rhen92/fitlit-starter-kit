@@ -77,7 +77,7 @@ header {
 
 .box {
   width: 45vw;
-  height: 25vh;
+  height: 27vh;
   border-radius: 15px;
   box-shadow: 10px 15px 10px #000000;
   display: flex;
@@ -229,13 +229,5 @@ header {
   .chart-style {
     height: 95vh;
     width: 95vw;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .info-container {
-    display: flex;
-    flex-direction: row;
-    margin-left: 125px;
   }
 }
