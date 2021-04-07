@@ -9,6 +9,9 @@
 * NPM Packages: Mocha, Chai, Chartjs, Dayjs
 * HTML & CSS
 
+## Testing:
+ * To run npm test successfully uncomment out the require statement at the top of the page for ActivityRepository, HydrationRepository, and SleepRepository.
+
 ## Deploy Link
 * [Click here to deploy Avocado Fit](https://rhen92.github.io/fitlit-starter-kit/src/index.html)
 
