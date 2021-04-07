@@ -12,26 +12,25 @@ const todaySleep = document.querySelector('#todaySleep');
 const avgSleep = document.querySelector('#avgSleep')
 const todayActivity = document.querySelector('#activityPara');
 
-
 const currentUser = new User(userData[0]);
 const currentHydration = new HydrationRepository(hydrationData);
 const currentSleep = new SleepRepository(sleepData);
 const currentActivity = new ActivityRepository(activityData);
 let { id, name, email, strideLength, dailyStepGoal, friends } = currentUser;
+
 let hydroBarChart = new Chart(hydroChart, {
   type: 'bar',
   data: {
     datasets: [{
-      label: 'Water Drank',
       data: displayWeeksHydration(),
       backgroundColor: [
-        'rgba(255, 99, 132, .5)',
-        'rgba(54, 162, 235, .5)',
-        'rgba(255, 206, 86, .5)',
-        'rgba(75, 192, 192, .5)',
-        'rgba(153, 102, 255, .5)',
-        'rgba(255, 159, 64, .5)',
-        'rgb(48, 142, 161, .5)'
+        'rgba(255, 99, 132, .8)',
+        'rgba(54, 162, 235, .8)',
+        'rgba(255, 206, 86, .8)',
+        'rgba(75, 192, 192, .8)',
+        'rgba(153, 102, 255, .8)',
+        'rgba(255, 159, 64, .8)',
+        'rgb(48, 142, 161, .8)'
       ],
       borderColor: [
         'rgba(255, 99, 132, 1)',
@@ -42,15 +41,19 @@ let hydroBarChart = new Chart(hydroChart, {
         'rgba(255, 159, 64, 1)',
         'rgb(48, 142, 161, 1)'
       ],
-      borderWidth: 1
     }]
   },
   options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
+    plugins: {
+      legend: {
+        display: false,
+      },
+      title: {
+        display: true,
+        color: "#FFFFFF",
+        text: 'Weekly Water'
+      },
+    },
   }
 });
 let sleepLineChart = new Chart(sleepChart, {
@@ -111,6 +114,7 @@ let sleepLineChart = new Chart(sleepChart, {
     }
   }
 });
+
 let activityLineChart = new Chart(activityChart, {
   type: 'line',
   data: {

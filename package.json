@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "chart.js": "^3.0.1",
+    "chartjs": "^0.3.24",
     "dayjs": "^1.10.4"
   }
 }

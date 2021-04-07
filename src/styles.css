@@ -1,23 +1,62 @@
 * {
   color: #FFFFFF;
+  font-family: 'Baloo 2';
 }
 
 body {
   margin: 0;
-	padding: 0;
-	outline: 0;
+  padding: 0;
+  outline: 0;
   width: 100%;
   height: 100%;
   background: rgb(39,52,67);
-  background: linear-gradient(180deg,#273443 0%,#000039 77%,#003f59 100%);
-  background-repeat: none;
+  background: linear-gradient(180deg,#273443 0%,#000039 77%,#003F59 100%);
+}
+
+header {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
 }
 
 .greeting {
-  text-align: center;
+  font-size: 35px;
 }
 
+.info-card {
+  position: absolute;
+  top: 10vh;
+  height: 16vh;
+  width: 20vw;
+  margin-left: 30px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 15px;
+  border: 5px solid #214A26;
+  background-color: #4CAF50;
+  box-shadow: 10px 15px 10px #000000;
+  opacity: 0.8;
+}
 
+.info-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  margin-left: 450px;
+}
+
+.avocado-buddy {
+  width: 18em;
+  height: 18em;
+}
+
+.info-p {
+  color: white;
+  font-weight: bold;
+  line-height: 0px;
+}
 
 .steps {
   display: flex;
@@ -29,7 +68,7 @@ body {
 .parent-container {
   display: grid;
   width: 100vw;
-  height: 74vh;
+  height: 60vh;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   justify-items: center;
@@ -37,24 +76,158 @@ body {
 }
 
 .box {
-  width: 40vw;
-  height: 20vh;
+  width: 45vw;
+  height: 27vh;
   border-radius: 15px;
   box-shadow: 10px 15px 10px #000000;
+  display: flex;
+  justify-content: center;
 }
 
 .hydration {
   background-color: #E0489B;
+  border: 5px solid #70244E;
 }
 
 .sleep {
   background-color: #7E26B9;
+  border: 5px solid #40145D;
 }
 
 .activity {
   background-color: #48E0AD;
+  border: 5px solid #247057;
 }
 
 .activity-average {
   background-color: #2F8EA1;
+  border: 5px solid #21557C;
+}
+
+.hydro-chart {
+  height: 400px;
+  width: 400px;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+.para-styling {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top:10px;
+  margin-left: 10px;
+}
+
+.doughnut-style {
+  position: relative;
+  height: 12.5vh;
+  width: 12.5vw;
+}
+
+.chart-style {
+  position: relative;
+  height: 27vh;
+  width: 27vw;
+}
+
+@media screen and (max-width: 425px) {
+  body {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    width: 100%;
+    height: 200vh;
+    background: rgb(39,52,67);
+    background: linear-gradient(180deg,#273443 0%,#000039 77%,#003F59 100%);
+  }
+
+  .info-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+  }
+
+  .hidden {
+    display: none!important;
+  }
+
+  .parent-container {
+    display: block;
+  }
+
+  .box {
+    width: 60vh;
+    height: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .activity-average {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 90vh
+  }
+
+  .doughnut-style {
+    height: 45vh;
+    width: 45vw;
+  }
+
+  .chart-style {
+    height: 80vh;
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  body {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    width: 100%;
+    height: 170vh;
+    background: rgb(39,52,67);
+    background: linear-gradient(180deg,#273443 0%,#000039 77%,#003F59 100%);
+  }
+
+  .avocado-buddy {
+    width: 12em;
+    height: 12em;
+  }
+
+  .hidden {
+    display: none!important;
+  }
+
+  .box {
+    font-size: 10px;
+  }
+
+  .activity-average {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 90vh
+  }
+
+  .doughnut-style {
+    height: 55vh;
+    width: 55vw;
+  }
+
+  .chart-style {
+    height: 95vh;
+    width: 95vw;
+  }
 }
