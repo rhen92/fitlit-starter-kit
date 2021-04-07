@@ -231,3 +231,11 @@ header {
     width: 95vw;
   }
 }
+
+@media screen and (max-width: 375px) {
+  .info-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 125px;
+  }
+}
