@@ -65,11 +65,6 @@ header {
   justify-content: center;
 }
 
-.greeting {
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
 .parent-container {
   display: grid;
   width: 100vw;
@@ -109,27 +104,36 @@ header {
   border: 5px solid #21557C;
 }
 
-.hydro-container {
-  display: flex;
-  justify-self: center;
-  align-self: center;
-}
-
-.today-oz {
-  justify-self: flex-start;
+.hydro-chart {
+  height: 400px;
+  width: 400px;
 }
 
 .title {
-  align-self: flex-start;
-  justify-self: flex-start;
-  margin-top: 45px;
+  text-align: center;
   font-weight: bold;
   font-size: 20px;
+  margin-bottom: 0;
 }
 
 .para-styling {
   display: flex;
+  flex: 1;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
-  margin-bottom: 20;
+  margin-top:10px;
+  margin-left: 10px;
+}
+
+.doughnut-style {
+  position: relative;
+  height: 12.5vh;
+  width: 12.5vw;
+}
+
+.chart-style {
+  position: relative;
+  height: 27vh;
+  width: 27vw;
 }
