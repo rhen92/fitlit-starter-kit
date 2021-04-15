@@ -13,7 +13,7 @@
  * To run npm test successfully uncomment out the require statement at the top of the page for ActivityRepository, HydrationRepository, and SleepRepository.
 
 ## Deploy Link
-* [Click here to deploy Avocado Fit](https://rhen92.github.io/fitlit-starter-kit/src/index.html)
+* [Click here to deploy Avocado Fit](https://rhen92.github.io/fitlit-starter-kit/)
 
 ## Visual Demo:
 ![GIF demonstrating how to toggle chart labels](https://media.giphy.com/media/4q7WvSp08SptxtMI7L/giphy.gif)
