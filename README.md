@@ -29,5 +29,5 @@
 
 ## Future Additions
 * Login page
-* Movable / rearranble boxes
+* Movable boxes
 * Ability to put in current data
